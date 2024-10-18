@@ -446,57 +446,6 @@ ncks --overwrite --no-alphabetize -x -v c4frac \
 echo "Append c4frac variable to output file"
 ncks -A -v c4frac c4frac.nc ${output_file}
 
-modis_igbp_file=${BIOS_PARAM_DIR}/vegtypeigbp_ctr05.nc
-echo "modis_igbp_file: ${modis_igbp_file}"
-
-echo "Rename variable vegtypeigbp_ctr05 to modis_igbp"
-ncrename --overwrite -v vegtypeigbp_ctr05,modis_igbp \
-    ${modis_igbp_file} modis_igbp.nc
-
-echo "Cast modis_igbp values to int"
-ncap2 --overwrite -s "modis_igbp=int(modis_igbp)" modis_igbp.nc modis_igbp.nc
-
-echo "Rename lat-lon coordinate variables and dimensions to latitude-longitude"
-ncrename --overwrite \
-    -d lat,latitude -v lat,latitude \
-    -d lon,longitude -v lon,longitude \
-    modis_igbp.nc modis_igbp.nc
-
-echo "Re-order data so that latitude values decrease monotonically from North
-to South"
-ncpdq --overwrite -a -latitude modis_igbp.nc modis_igbp.nc
-
-echo "Remove modis_igbp variable from output file"
-ncks --overwrite --no-alphabetize -x -v modis_igbp \
-    ${output_file} ${output_file}
-
-echo "Append modis_igbp variable to output file"
-ncks -A -v modis_igbp modis_igbp.nc ${output_file}
-
-avgannmax_fapar_file=${BIOS_PARAM_DIR}/avgannmaxdata1998-2005_ctr05.nc
-echo "avgannmax_fapar_file: ${avgannmax_fapar_file}"
-
-echo "Rename variable avgannmaxdata1998-2005_ctr05 to avgannmax_fapar"
-ncrename --overwrite -v avgannmaxdata1998-2005_ctr05,avgannmax_fapar \
-    ${avgannmax_fapar_file} avgannmax_fapar.nc
-
-echo "Rename lat-lon coordinate variables and dimensions to latitude-longitude"
-ncrename --overwrite \
-    -d lat,latitude -v lat,latitude \
-    -d lon,longitude -v lon,longitude \
-    avgannmax_fapar.nc avgannmax_fapar.nc
-
-echo "Re-order data so that latitude values decrease monotonically from North
-to South"
-ncpdq --overwrite -a -latitude avgannmax_fapar.nc avgannmax_fapar.nc
-
-echo "Remove avgannmax_fapar variable from output file"
-ncks --overwrite --no-alphabetize -x -v avgannmax_fapar \
-    ${output_file} ${output_file}
-
-echo "Append avgannmax_fapar variable to output file"
-ncks -A -v avgannmax_fapar avgannmax_fapar.nc ${output_file}
-
 echo "Clean up"
-rm avgannmax_fapar.nc clay.nc modis_igbp.nc sand.nc ssat.nc bch.nc css.nc hyds.nc mvg.nc sfc.nc sucs.nc c4frac.nc rhosoil.nc silt.nc swilt.nc
+rm clay.nc sand.nc ssat.nc bch.nc css.nc hyds.nc mvg.nc sfc.nc sucs.nc c4frac.nc rhosoil.nc silt.nc swilt.nc
 
