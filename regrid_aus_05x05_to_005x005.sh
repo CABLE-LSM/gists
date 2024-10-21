@@ -444,6 +444,22 @@ ncks --overwrite --no-alphabetize -x -v c4frac \
 echo "Append c4frac variable to output file"
 ncks -A -v c4frac c4frac.nc ${output_file}
 
+bios_soil_vars_regex='^clay$|^sand$|^ssat$|^bch$|^css$|^hyds$|^sfc$|^sucs$|^rhosoil$|^silt$|^swilt$'
+
+echo "Add provenance information to BIOS soil parameters"
+att_nm='comment'
+var_nm=${bios_soil_vars_regex}
+mode='o'
+att_type='c'
+att_val='Data provided from the Atlas of Australian Soils (digital)'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+att_nm='references'
+var_nm=${bios_soil_vars_regex}
+mode='o'
+att_type='c'
+att_val='https://doi.org/10.25919/5df03e991672d and https://publications.csiro.au/publications/publication/PIlegacy:889'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 echo "Clean up"
 rm clay.nc sand.nc ssat.nc bch.nc css.nc hyds.nc mvg.nc sfc.nc sucs.nc c4frac.nc rhosoil.nc silt.nc swilt.nc
 
