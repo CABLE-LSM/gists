@@ -120,8 +120,6 @@ modification_attr="${script_name}: Update soil parameter values with fields as u
 echo "Add modification note to global attributes"
 ncatted -h -a modification,global,p,c,"${modification_attr}" ${output_file}
 
-# TODO(Sean): check unit, standard name, long name attributes for appended variables
-
 silt_file=${BIOS_PARAM_DIR}/siltfrac1.nc
 echo "silt_file: ${silt_file}"
 
