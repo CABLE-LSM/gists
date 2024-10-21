@@ -143,6 +143,22 @@ ncks --overwrite --no-alphabetize -x -v silt \
 echo "Append silt variable to output file"
 ncks -A -v silt silt.nc ${output_file}
 
+echo "Set silt units attribute"
+att_nm='units'
+var_nm='silt'
+mode='o'
+att_type='c'
+att_val='1'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set silt long_name attribute"
+att_nm='long_name'
+var_nm='silt'
+mode='o'
+att_type='c'
+att_val='UM soil texture - silt fraction'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 clay_file=${BIOS_PARAM_DIR}/clayfrac1.nc
 echo "clay_file: ${clay_file}"
 
@@ -166,6 +182,22 @@ ncks --overwrite --no-alphabetize -x -v clay \
 echo "Append clay variable to output file"
 ncks -A -v clay clay.nc ${output_file}
 
+echo "Set clay units attribute"
+att_nm='units'
+var_nm='clay'
+mode='o'
+att_type='c'
+att_val='1'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set clay long_name attribute"
+att_nm='long_name'
+var_nm='clay'
+mode='o'
+att_type='c'
+att_val='UM soil texture - clay fraction'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 echo "Create sand file"
 ncks --overwrite --no-alphabetize silt.nc sand.nc
 ncks -A -v clay clay.nc sand.nc
@@ -180,6 +212,22 @@ ncks --overwrite --no-alphabetize -x -v sand \
 
 echo "Append sand variable to output file"
 ncks -A -v sand sand.nc ${output_file}
+
+echo "Set sand units attribute"
+att_nm='units'
+var_nm='sand'
+mode='o'
+att_type='c'
+att_val='1'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set sand long_name attribute"
+att_nm='long_name'
+var_nm='sand'
+mode='o'
+att_type='c'
+att_val='UM soil texture - sand fraction'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 css_file=${BIOS_PARAM_DIR}/csoil1.nc
 echo "css_file: ${css_file}"
@@ -204,6 +252,22 @@ ncks --overwrite --no-alphabetize -x -v css \
 echo "Append css variable to output file"
 ncks -A -v css css.nc ${output_file}
 
+echo "Set css units attribute"
+att_nm='units'
+var_nm='css'
+mode='o'
+att_type='c'
+att_val='J/kg/K'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set css long_name attribute"
+att_nm='long_name'
+var_nm='css'
+mode='o'
+att_type='c'
+att_val='Soil specific heat capacity'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 sfc_file=${BIOS_PARAM_DIR}/wvol1fc_m3m3.nc
 echo "sfc_file: ${sfc_file}"
 
@@ -227,6 +291,22 @@ ncks --overwrite --no-alphabetize -x -v sfc \
 echo "Append sfc variable to output file"
 ncks -A -v sfc sfc.nc ${output_file}
 
+echo "Set sfc units attribute"
+att_nm='units'
+var_nm='sfc'
+mode='o'
+att_type='c'
+att_val='m3 m-3'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set sfc long_name attribute"
+att_nm='long_name'
+var_nm='sfc'
+mode='o'
+att_type='c'
+att_val='VOL SMC AT CRIT PT'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 rhosoil_file=${BIOS_PARAM_DIR}/bulkdens1_kgm3.nc
 echo "rhosoil_file: ${rhosoil_file}"
 
@@ -249,6 +329,22 @@ ncks --overwrite --no-alphabetize -x -v rhosoil \
 
 echo "Append rhosoil variable to output file"
 ncks -A -v rhosoil rhosoil.nc ${output_file}
+
+echo "Set rhosoil units attribute"
+att_nm='units'
+var_nm='rhosoil'
+mode='o'
+att_type='c'
+att_val='kg/m^3'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set rhosoil long_name attribute"
+att_nm='long_name'
+var_nm='rhosoil'
+mode='o'
+att_type='c'
+att_val='SOIL BULK DENSITY'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 bch_file=${BIOS_PARAM_DIR}/b1.nc
 echo "bch_file: ${bch_file}"
@@ -278,6 +374,22 @@ ncks --overwrite --no-alphabetize -x -v bch \
 echo "Append bch variable to output file"
 ncks -A -v bch bch.nc ${output_file}
 
+echo "Set bch units attribute"
+att_nm='units'
+var_nm='bch'
+mode='o'
+att_type='c'
+att_val='1'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set bch long_name attribute"
+att_nm='long_name'
+var_nm='bch'
+mode='o'
+att_type='c'
+att_val='CLAPP-HORNBERGER B COEFFICIENT'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 hyds_file=${BIOS_PARAM_DIR}/hyk1sat_ms.nc
 echo "hyds_file: ${hyds_file}"
 
@@ -305,6 +417,22 @@ ncks --overwrite --no-alphabetize -x -v hyds \
 
 echo "Append hyds variable to output file"
 ncks -A -v hyds hyds.nc ${output_file}
+
+echo "Set hyds units attribute"
+att_nm='units'
+var_nm='hyds'
+mode='o'
+att_type='c'
+att_val='m/s'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set hyds long_name attribute"
+att_nm='long_name'
+var_nm='hyds'
+mode='o'
+att_type='c'
+att_val='SAT SOIL CONDUCTIVITY'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 ssat_file=${BIOS_PARAM_DIR}/wvol1sat_m3m3.nc
 echo "ssat_file: ${ssat_file}"
@@ -334,6 +462,22 @@ ncks --overwrite --no-alphabetize -x -v ssat \
 echo "Append ssat variable to output file"
 ncks -A -v ssat ssat.nc ${output_file}
 
+echo "Set ssat units attribute"
+att_nm='units'
+var_nm='ssat'
+mode='o'
+att_type='c'
+att_val='1'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set ssat long_name attribute"
+att_nm='long_name'
+var_nm='ssat'
+mode='o'
+att_type='c'
+att_val='VOL SMC AT SATURATION'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 swilt_file=${BIOS_PARAM_DIR}/wvol1w_m3m3.nc
 echo "swilt_file: ${swilt_file}"
 
@@ -361,6 +505,22 @@ ncks --overwrite --no-alphabetize -x -v swilt \
 
 echo "Append swilt variable to output file"
 ncks -A -v swilt swilt.nc ${output_file}
+
+echo "Set swilt units attribute"
+att_nm='units'
+var_nm='swilt'
+mode='o'
+att_type='c'
+att_val='1'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set swilt long_name attribute"
+att_nm='long_name'
+var_nm='swilt'
+mode='o'
+att_type='c'
+att_val='VOL SMC AT WILTING'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 sucs_file=${BIOS_PARAM_DIR}/psie1_m.nc
 echo "sucs_file: ${sucs_file}"
@@ -395,6 +555,22 @@ ncks --overwrite --no-alphabetize -x -v sucs \
 echo "Append sucs variable to output file"
 ncks -A -v sucs sucs.nc ${output_file}
 
+echo "Set sucs units attribute"
+att_nm='units'
+var_nm='sucs'
+mode='o'
+att_type='c'
+att_val='m'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set sucs long_name attribute"
+att_nm='long_name'
+var_nm='sucs'
+mode='o'
+att_type='c'
+att_val='SATURATED SOIL WATER SUCTION'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 mvg_file=${BIOS_PARAM_DIR}/nvis5pre1750grp.nc
 echo "mvg_file: ${mvg_file}"
 
@@ -421,6 +597,14 @@ ncks --overwrite --no-alphabetize -x -v mvg \
 echo "Append mvg variable to output file"
 ncks -A -v mvg mvg.nc ${output_file}
 
+echo "Set mvg long_name attribute"
+att_nm='long_name'
+var_nm='mvg'
+mode='o'
+att_type='c'
+att_val='NVIS major vegetation group (v5.0)'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 c4frac_file=${BIOS_PARAM_DIR}/c4_grass_frac_cov.nc
 echo "c4frac_file: ${c4frac_file}"
 
@@ -443,6 +627,22 @@ ncks --overwrite --no-alphabetize -x -v c4frac \
 
 echo "Append c4frac variable to output file"
 ncks -A -v c4frac c4frac.nc ${output_file}
+
+echo "Set c4frac units attribute"
+att_nm='units'
+var_nm='c4frac'
+mode='o'
+att_type='c'
+att_val='1'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set c4frac long_name attribute"
+att_nm='long_name'
+var_nm='c4frac'
+mode='o'
+att_type='c'
+att_val='Fractional cover of C4 grass'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 bios_soil_vars_regex='^clay$|^sand$|^ssat$|^bch$|^css$|^hyds$|^sfc$|^sucs$|^rhosoil$|^silt$|^swilt$'
 
