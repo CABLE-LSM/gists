@@ -296,7 +296,7 @@ att_nm='units'
 var_nm='sfc'
 mode='o'
 att_type='c'
-att_val='m3 m-3'
+att_val='1'
 ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 echo "Set sfc long_name attribute"
