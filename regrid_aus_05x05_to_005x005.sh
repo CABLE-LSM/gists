@@ -156,7 +156,7 @@ att_nm='long_name'
 var_nm='silt'
 mode='o'
 att_type='c'
-att_val='UM soil texture - silt fraction'
+att_val='UM SOIL TEXTURE - SILT FRACTION'
 ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 clay_file=${BIOS_PARAM_DIR}/clayfrac1.nc
@@ -195,7 +195,7 @@ att_nm='long_name'
 var_nm='clay'
 mode='o'
 att_type='c'
-att_val='UM soil texture - clay fraction'
+att_val='UM SOIL TEXTURE - CLAY FRACTION'
 ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 echo "Create sand file"
@@ -226,7 +226,7 @@ att_nm='long_name'
 var_nm='sand'
 mode='o'
 att_type='c'
-att_val='UM soil texture - sand fraction'
+att_val='UM SOIL TEXTURE - SAND FRACTION'
 ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 css_file=${BIOS_PARAM_DIR}/csoil1.nc
@@ -265,7 +265,7 @@ att_nm='long_name'
 var_nm='css'
 mode='o'
 att_type='c'
-att_val='Soil specific heat capacity'
+att_val='SOIL SPECIFIC HEAT CAPACITY'
 ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 sfc_file=${BIOS_PARAM_DIR}/wvol1fc_m3m3.nc
@@ -602,7 +602,7 @@ att_nm='long_name'
 var_nm='mvg'
 mode='o'
 att_type='c'
-att_val='NVIS major vegetation group (v5.0)'
+att_val='NVIS MAJOR VEGETATION GROUP (V5.0)'
 ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 c4frac_file=${BIOS_PARAM_DIR}/c4_grass_frac_cov.nc
@@ -641,7 +641,7 @@ att_nm='long_name'
 var_nm='c4frac'
 mode='o'
 att_type='c'
-att_val='Fractional cover of C4 grass'
+att_val='FRACTIONAL COVER OF C4 GRASS'
 ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
 bios_soil_vars_regex='^clay$|^sand$|^ssat$|^bch$|^css$|^hyds$|^sfc$|^sucs$|^rhosoil$|^silt$|^swilt$'
