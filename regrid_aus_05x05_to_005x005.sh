@@ -605,6 +605,22 @@ att_type='c'
 att_val='NVIS MAJOR VEGETATION GROUP (V5.0)'
 ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
+echo "Set mvg comment attribute"
+att_nm='comment'
+var_nm='mvg'
+mode='o'
+att_type='c'
+att_val='Data provided from National Vegetation Information System (NVIS)'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
+echo "Set mvg references attribute"
+att_nm='references'
+var_nm='mvg'
+mode='o'
+att_type='c'
+att_val='https://www.dcceew.gov.au/environment/land/native-vegetation/national-vegetation-information-system/data-products#mvg5'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 c4frac_file=${BIOS_PARAM_DIR}/c4_grass_frac_cov.nc
 echo "c4frac_file: ${c4frac_file}"
 
