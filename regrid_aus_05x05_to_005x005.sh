@@ -660,6 +660,14 @@ att_type='c'
 att_val='FRACTIONAL COVER OF C4 GRASS'
 ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
 
+echo "Set c4frac references attribute"
+att_nm='references'
+var_nm='c4frac'
+mode='o'
+att_type='c'
+att_val='https://doi.org/10.1111/j.1365-2486.2008.01746.x'
+ncatted -h -a "${att_nm}","${var_nm}","${mode}","${att_type}","${att_val}" ${output_file}
+
 bios_soil_vars_regex='^clay$|^sand$|^ssat$|^bch$|^css$|^hyds$|^sfc$|^sucs$|^rhosoil$|^silt$|^swilt$'
 
 echo "Add provenance information to BIOS soil parameters"
