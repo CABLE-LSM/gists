@@ -27,10 +27,7 @@ def convert_landmask(HeaderFile, FltFile, OutFile):
     # Reshape to the desired shape, and convert values to Int8
     SourceData = SourceData.reshape(nRows, nCols)
     SourceData = numpy.where(SourceData == MissingVal, 0, 1).astype(numpy.int8)
-
-    # Now mask the array
-    MaskedData = numpy.ma.masked_where(SourceData == 0, SourceData)
-    numpy.ma.set_fill_value(MaskedData, 0)
+    print(SourceData.sum())
 
     # The landmask is defined in descending latitude order, we want it
     # ascending (once we move to NetCDF gridinfo)
@@ -42,15 +39,15 @@ def convert_landmask(HeaderFile, FltFile, OutFile):
     Resolution = float(HeaderContents['cellsize'])
 
     Longitudes = numpy.linspace(
-            LonStart,
-            LonStart + (nCols - 1) * Resolution,
+            LonStart + 0.5 * Resolution,    # Convert to cell centre
+            LonStart + (nCols - 0.5) * Resolution,
             nCols,
             dtype=numpy.float32
             )
 
     Latitudes = numpy.linspace(
-            LatStart,
-            LatStart + (nRows - 1) * Resolution,
+            LatStart + 0.5 * Resolution,    # Convert to cell centre
+            LatStart + (nRows - 0.5) * Resolution,
             nRows,
             dtype=numpy.float32
             )
@@ -58,7 +55,7 @@ def convert_landmask(HeaderFile, FltFile, OutFile):
     # Create the xarray dataset to write to file
     Landmask = xarray.Dataset(
             data_vars={
-                'land': (('latitude', 'longitude'), MaskedData)
+                'land': (('latitude', 'longitude'), SourceData)
                 },
             coords={
                 'longitude': ('longitude', Longitudes),
@@ -66,16 +63,18 @@ def convert_landmask(HeaderFile, FltFile, OutFile):
                 },
             attrs={
                 'description': f'Landmask created from the {HeaderFile} and' +\
-                        ' {FltFile}. Land=1, sea=0'
+                        f' {FltFile}. Land=1, sea=0'
                 }
             )
 
+    # Despite MaskedData being of dtype int8, xarray decides to write it as
+    # float32 unless we tell it specifically not to
     Landmask.to_netcdf(OutFile)
 
 if __name__ == '__main__':
     # Specify the hdr, flt and output file here
     convert_landmask(
-            '/g/data/rp23/experiments/2024-04-17_BIOS3-merge/BIOS3_forcing/reccap1000pts/reccap1000pts.hdr',
-            '/g/data/rp23/experiments/2024-04-17_BIOS3-merge/BIOS3_forcing/reccap1000pts/reccap1000pts.flt',
-            'Australia_BIOS_1000pts_landmask.nc'
+            '/g/data/rp23/experiments/2024-04-17_BIOS3-merge/BIOS3_forcing/australia_0.05/Australia_op_maskv2ctr05.hdr',
+            '/g/data/rp23/experiments/2024-04-17_BIOS3-merge/BIOS3_forcing/australia_0.05/Australia_op_maskv2ctr05.flt',
+            'Australia_BIOS_0p05_resolution_landmask.nc'
             )
